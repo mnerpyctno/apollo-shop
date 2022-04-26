@@ -1,0 +1,130 @@
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.navbar_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar_wrapper > * {
+    flex: 1;
+}
+
+.navbar__menu {
+    display: flex;
+    justify-content: flex-start;
+    text-transform: uppercase;
+}
+
+.navbar__menu .navbar__menu-item {
+    display: inline-block;
+    position: relative;
+}
+
+.navbar__menu .navbar__menu-item:not(:last-child) { 
+    margin-right: 32px;
+}
+
+.navbar__menu .navbar__menu-item::before {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 0;
+    background-color: #5ECE7B;
+    transition: width .5s ease-in-out, left .5s ease-in-out;
+    bottom: 0;  
+    left: 50%;  
+    top: 46px;
+}
+
+.navbar__menu .navbar__menu-item::after {
+    display: block;
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 0;
+    background-color: #5ECE7B;
+    transition: width .5s ease-in-out;
+    bottom: 0; 
+    left: 50%;
+    top: 46px;
+}
+
+.navbar__menu .navbar__menu-item:hover::before{
+    width: 50%;
+    left: 0;
+}
+
+.navbar__menu .navbar__menu-item:hover::after{
+    width: 50%;
+}
+
+.navbar__menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar__menu a:hover {
+    color: #5ECE7B;
+}
+
+.navbar__brand {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar__brand img {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar__actions-currency__menu-list {
+    padding: 0!important;
+    border-radius: 0!important;
+}
+
+.navbar__actions-currency__option--is-selected {
+    background-color: #EEEEEE!important;
+    color: black!important;
+}
+
+.navbar__actions-currency {
+    margin-right: 20px;
+}
+
+.navbar__actions-cart {
+    position: relative;
+    margin: auto 0;
+}
+
+.navbar__actions-cart_counter {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -50%;
+    top: -50%;
+    background: #1D1F22;
+    border-radius: 60px;
+}
+
+.navbar__actions-cart_counter p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: white;
+    text-align: center;
+}

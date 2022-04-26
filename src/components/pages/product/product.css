@@ -1,0 +1,107 @@
+.product {
+    margin-top: 82px;
+    display: flex;
+}
+
+.product__left-side {
+    display: flex;
+    margin-right: 100px;
+}
+
+.product__right-side {
+    width: 303px;
+}
+
+.product-gallery__selector-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.product-image img {
+    margin-left: 50px;
+    width: 610px;
+    height: 510px;
+    object-fit: contain;
+}
+
+.product__right-side .product-data__brand {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    color: #1D1F22;
+    margin-bottom: 16px;
+}
+
+.product__right-side .product-data__name {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    color: #1D1F22;
+}
+
+.product-attributes__name, .product-price__header {
+    margin-top: 43px;
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+.product-attributes__list button {
+    margin-top: 8px;
+    padding: 14px 23px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.product-attributes__list button:not(:last-child) {
+    margin-right: 12px;
+}
+
+.product-price__amount {
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+}
+
+.product-add {
+    padding: 16px 32px;
+    background: #5ECE7B;
+    color: white;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.product-description {
+    margin-top: 40px;
+}
+
+.product-gallery__selector {
+    height: 570px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.product-gallery__selector::-webkit-scrollbar { 
+    width: 0; 
+}
