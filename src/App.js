@@ -1,25 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+import { CATEGORIES_NAMES } from './components/server/query';
+import { Header } from './components/header';
+import { Category } from './components/pages/category/category';
+import { Product } from './components/pages/product/product';
+
+export default function App() {
+  const { loading, data } = useQuery(CATEGORIES_NAMES);
+  const [categories = ['all'], setCategories] = useState();
+  const [currency, setCurrency] = useState();
+  const [cartProducts, changeCartProducts] = useState();
+
+  useEffect(() => {
+    if(!loading) {
+      setCategories(data.categories.map(({name}) => name));
+    }
+    if(!currency) {
+      setCurrency(0);
+    }
+    setCurrency(localStorage.getItem('currrency'));
+    changeCartProducts(JSON.parse(localStorage.getItem('cart')));
+  }, [currency, loading, data])
+
+  function getAmount(amount) {
+    return amount.toLocaleString('ru-RU');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header 
+        categories={categories} 
+        currency={currency}
+        cartProducts={cartProducts}
+      />
+      <Routes>
+          <Route 
+            index path="/" 
+          />
+          <Route 
+            path=":page" 
+            component="{Page}" 
+            element={<Category 
+                        currency={currency} 
+                        getAmount={getAmount}
+                    />} 
+          />
+          <Route 
+            path="product/:product" 
+            component="{Products}" 
+              element={<Product 
+                          currency={currency} 
+                          getAmount={getAmount} 
+                          cartProducts={cartProducts}
+                          changeCartProducts={changeCartProducts}
+                      />}
+          />
+          <Route path="cart" />
+      </Routes>
+    </>
   );
 }
 
-export default App;
+// eslint-disable-next-line no-unused-vars
+function Products() {
+  return (
+    <>
+      {this.props.match.params.product}
+    </>
+  )
+}
+
+// eslint-disable-next-line no-unused-vars
+function Page() {
+  return (
+    <>
+      {this.props.match.params.page}
+    </>
+  )
+}
