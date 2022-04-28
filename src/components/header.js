@@ -55,7 +55,7 @@ export function Header({ categories = [], currency, cartProducts}) {
                         <Link to="/cart" className="navbar__actions-cart">
                             <img src={cart} alt="Cart" />
                             <div className="navbar__actions-cart_counter">
-                                <p>{cartProducts !== null ? Object.values(cartProducts).length : 0 }</p>
+                                <p>{cartProducts ? Object.values(cartProducts).length : 0 }</p>
                             </div>
                         </Link>
                     </div>                    

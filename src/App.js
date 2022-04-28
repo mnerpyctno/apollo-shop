@@ -6,6 +6,7 @@ import { CATEGORIES_NAMES } from './components/server/query';
 import { Header } from './components/header';
 import { Category } from './components/pages/category/category';
 import { Product } from './components/pages/product/product';
+import { Cart } from './components/pages/cart';
 
 export default function App() {
   const { loading, data } = useQuery(CATEGORIES_NAMES);
@@ -21,7 +22,6 @@ export default function App() {
       setCurrency(0);
     }
     setCurrency(localStorage.getItem('currrency'));
-    changeCartProducts(JSON.parse(localStorage.getItem('cart')));
   }, [currency, loading, data])
 
   function getAmount(amount) {
@@ -50,14 +50,19 @@ export default function App() {
           <Route 
             path="product/:product" 
             component="{Products}" 
-              element={<Product 
-                          currency={currency} 
-                          getAmount={getAmount} 
-                          cartProducts={cartProducts}
-                          changeCartProducts={changeCartProducts}
+            element={<Product 
+                        currency={currency} 
+                        getAmount={getAmount} 
+                        cartProducts={cartProducts}
+                        changeCartProducts={changeCartProducts}
                       />}
           />
-          <Route path="cart" />
+          <Route 
+            path="cart" 
+            element={<Cart 
+                        cartProducts={cartProducts}
+                    />}
+          />
       </Routes>
     </>
   );

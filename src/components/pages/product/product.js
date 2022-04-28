@@ -34,8 +34,8 @@ export function Product({ currency, getAmount, changeCartProducts, cartProducts 
         if(product.attributes.length > 0 && Object.keys(selectedAttribute).length !== product.attributes.length) {
             alert(`Please, choose the ${product.attributes.map(item => item.name.toUpperCase()).join(', ')}`)
         } else {
-            changeCartProducts({ ...cartProducts, [params.product]: { attributes: selectedAttribute } }); 
-            localStorage.setItem('cart', JSON.stringify(cartProducts));
+            changeCartProducts({ ...cartProducts, 
+                                [params.product]: selectedAttribute }); 
         }
     }
 
